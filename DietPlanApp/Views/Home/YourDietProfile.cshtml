@@ -1,4 +1,5 @@
 ﻿
+@using DietPlanApp.Models.External
 @model DietPlanApp.ViewModels.VMWeeklyRecipies
 @{
     ViewBag.Title = "YourDietProfile";
@@ -24,25 +25,25 @@
         <td>Morning</td>
         @foreach (var wr in Model.WeeklyRecipies.Items.Where(t => t.Slot == 1).OrderBy(t => t.Day))
         {
-            <th> @wr.RecipeBasicData.Title </th>
+            <th> @Html.ActionLink(wr.RecipeBasicData.Title, "MealDetails", new {id = wr.RecipeBasicData.Id}) </th>
         }
     </tr>
 
     @*morning*@
     <tr>
         <td>Noon</td>
-        @foreach (var wr2 in Model.WeeklyRecipies.Items.Where(t => t.Slot == 2).OrderBy(t => t.Day))
+        @foreach (var wr in Model.WeeklyRecipies.Items.Where(t => t.Slot == 2).OrderBy(t => t.Day))
         {
-            <th> @wr2.RecipeBasicData.Title </th>
+            <th> @wr.RecipeBasicData.Title </th>
         }
     </tr>
 
     @*morning*@
     <tr>
         <td>Evening</td>
-        @foreach (var wr3 in Model.WeeklyRecipies.Items.Where(t => t.Slot == 3).OrderBy(t => t.Day))
+        @foreach (var wr in Model.WeeklyRecipies.Items.Where(t => t.Slot == 3).OrderBy(t => t.Day))
         {
-            <th> @wr3.RecipeBasicData.Title </th>
+            <th> @wr.RecipeBasicData.Title </th>
         }
     </tr>
 </table>

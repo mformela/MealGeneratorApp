@@ -9,12 +9,34 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using DietPlanApp.Models.External;
+using Microsoft.AspNet.Identity;
 
 namespace DietPlanApp.Controllers
 {
     public class HomeController : Controller
     {
-        public async Task<ActionResult> Index()
+        private const string ApiKeyLabel = "X-Mashape-Key";
+        private const string ApiKey = "MZR5OHGXhbmshmITf5PCbdEeSl7zp1IaQnIjsnfF1x8yrAx9Ui";
+
+        public ActionResult Index()
+        {
+
+            var userId = User.Identity.GetUserId();
+
+            var db = new ApplicationDbContext();
+
+            var profile = db.UserProfiles.SingleOrDefault(up => up.UserId == userId);
+
+            if (profile == null)
+            {
+                // we did not found profile, redirect to details
+                return RedirectToAction("FillOut", "Profile");
+            }
+
+            return View();
+        }
+
+        public async Task<ActionResult> YourDietProfile()
         {
             var data = await GetMeals();
 
@@ -24,33 +46,52 @@ namespace DietPlanApp.Controllers
                 WeeklyRecipies = recipies
             };
 
-            return View("YourDietProfile", viewModel);
+            return View(viewModel);
         }
 
         public async Task<string> GetMeals()
         {
-            HttpClient client = new HttpClient();
-            var basicUrl = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate";
+            const string basicUrl = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate";
 
-            // 'X-Mashape-Key: MZR5OHGXhbmshmITf5PCbdEeSl7zp1IaQnIjsnfF1x8yrAx9Ui'
-
-            var builder = new UriBuilder(basicUrl);
-            builder.Port = -1;
+            var builder = new UriBuilder(basicUrl)
+            {
+                Port = -1,
+            };
             var query = HttpUtility.ParseQueryString(builder.Query);
             query["diet"] = "vegetarian";
             query["targetCalories"] = "2000";
             query["timeFrame"] = "week";
+
             builder.Query = query.ToString();
-            string url = builder.ToString();
+            var url = builder.ToString();
 
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
-
-                httpClient.DefaultRequestHeaders.Add("X-Mashape-Key", "MZR5OHGXhbmshmITf5PCbdEeSl7zp1IaQnIjsnfF1x8yrAx9Ui");
+                httpClient.DefaultRequestHeaders.Add(ApiKeyLabel, ApiKey);
                 return await httpClient.GetStringAsync(url);
-                //return JsonConvert.DeserializeObject<List<Car>>(
-                //    await httpClient.GetStringAsync(uri)
-                //);
+            }
+        }
+
+        public async Task<ActionResult> MealDetails(long id)
+        {
+            var mealDetailsData = await GetMealsDetails(id);
+
+            var mealDetails = Models.External.MealDetails.FromJson(mealDetailsData);
+
+            return View(mealDetails);
+        }
+
+        public async Task<string> GetMealsDetails(long id)
+        {
+            var basicUrl = $"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/{id}/information";
+
+            var builder = new UriBuilder(basicUrl) {Port = -1};
+            var url = builder.ToString();
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Add(ApiKeyLabel, ApiKey);
+                return await httpClient.GetStringAsync(url);
             }
         }
 

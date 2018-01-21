@@ -238,6 +238,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -341,9 +342,14 @@
     <Content Include="Views\Home\PhysicalActivity.cshtml" />
     <Content Include="Views\Home\AddInfo.cshtml" />
     <Content Include="Views\Home\YourDietProfile.cshtml" />
+    <Content Include="Views\Home\MealDetails.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Profile\FillOut.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Services\" />
     <Folder Include="Views\UserProfile\" />
     <Folder Include="Views\Values\" />
   </ItemGroup>
