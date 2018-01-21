@@ -242,6 +242,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801211741428_InitialCreate.cs" />
+    <Compile Include="Migrations\201801211741428_InitialCreate.Designer.cs">
+      <DependentUpon>201801211741428_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801211801207_Add UserProfiles.cs" />
+    <Compile Include="Migrations\201801211801207_Add UserProfiles.Designer.cs">
+      <DependentUpon>201801211801207_Add UserProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801211803392_Typo fixes.cs" />
+    <Compile Include="Migrations\201801211803392_Typo fixes.Designer.cs">
+      <DependentUpon>201801211803392_Typo fixes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801211821045_Removed password form UserProfile.cs" />
+    <Compile Include="Migrations\201801211821045_Removed password form UserProfile.Designer.cs">
+      <DependentUpon>201801211821045_Removed password form UserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\External\Converter.cs" />
     <Compile Include="Models\External\ExtendedIngredient.cs" />
@@ -337,6 +354,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801211741428_InitialCreate.resx">
+      <DependentUpon>201801211741428_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801211801207_Add UserProfiles.resx">
+      <DependentUpon>201801211801207_Add UserProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801211803392_Typo fixes.resx">
+      <DependentUpon>201801211803392_Typo fixes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801211821045_Removed password form UserProfile.resx">
+      <DependentUpon>201801211821045_Removed password form UserProfile.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
