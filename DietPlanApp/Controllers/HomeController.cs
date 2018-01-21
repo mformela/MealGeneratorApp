@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using DietPlanApp.Models.External;
 
 namespace DietPlanApp.Controllers
 {

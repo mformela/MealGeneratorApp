@@ -30,6 +30,6 @@ namespace DietPlanApp.Models
             return new ApplicationDbContext();
         }
 
-        //public DbSet<Recepie> Reciepies { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
     }
 }
