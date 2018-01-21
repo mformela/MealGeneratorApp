@@ -229,13 +229,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiConsumer\Client.cs" />
-    <Compile Include="ApiConsumer\Controllers\EmailController.cs" />
-    <Compile Include="ApiConsumer\Controllers\PerformancesController.cs" />
-    <Compile Include="ApiConsumer\Controllers\ValuesController.cs" />
-    <Compile Include="ApiConsumer\Model\ApplicationDBContext.cs" />
-    <Compile Include="ApiConsumer\Model\EmailApiModel.cs" />
-    <Compile Include="ApiConsumer\Model\Performance.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -246,7 +239,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
-    <Compile Include="Data_Access_Layer\UserProfileContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,8 +249,6 @@
     <Compile Include="Models\WeeklyRecipies.cs" />
     <Compile Include="Models\UserProfileModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\EmailService.cs" />
-    <Compile Include="Services\RecipesService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\VMWeeklyRecipies.cs" />
   </ItemGroup>
