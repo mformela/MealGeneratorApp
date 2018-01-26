@@ -26,5 +26,7 @@ namespace DietPlanApp.Models.External
         public string Value { get; set; }
 
         public RecipeBasicData RecipeBasicData =>  RecipeBasicData.FromJson(Value);
+
+       
     }
 }

@@ -1,5 +1,4 @@
-﻿
-@using DietPlanApp.Models.External
+﻿@using DietPlanApp.Models.External
 @model DietPlanApp.ViewModels.VMWeeklyRecipies
 @{
     ViewBag.Title = "YourDietProfile";
@@ -8,43 +7,57 @@
 <h2>Your Meal Generator</h2>
 <h3>This is your weekly meal generator. It uses all information you give, count your daily caloric demand</h3>
 
-<table class="table">
-    <tr>
-        <th>Day Time</th>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-        <th>Saturday</th>
-        <th>Sunday</th>
-    </tr>
+<table class="table table-striped" class="table-responsive">
+    <thead>
+        <tr>
+            <th>Day Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+    </thead>
+    <tbody>
+        @*morning*@
+        <tr>
+            <td>Morning</td>
+            @foreach (var wr in Model.WeeklyRecipies.Items.Where(t => t.Slot == 1).OrderBy(t => t.Day))
+            {
+                <th> @Html.ActionLink(wr.RecipeBasicData.Title, "MealDetails", new { id = wr.RecipeBasicData.Id }) </th>
+            }
+        </tr>
 
-    @*morning*@
-    <tr>
-        <td>Morning</td>
-        @foreach (var wr in Model.WeeklyRecipies.Items.Where(t => t.Slot == 1).OrderBy(t => t.Day))
-        {
-            <th> @Html.ActionLink(wr.RecipeBasicData.Title, "MealDetails", new {id = wr.RecipeBasicData.Id}) </th>
-        }
-    </tr>
+        @*morning*@
+        <tr>
+            <td>Noon</td>
+            @foreach (var wr in Model.WeeklyRecipies.Items.Where(t => t.Slot == 2).OrderBy(t => t.Day))
+            {
+                <th> @Html.ActionLink(wr.RecipeBasicData.Title, "MealDetails", new { id = wr.RecipeBasicData.Id }) </th>
+            }
+        </tr>
 
-    @*morning*@
-    <tr>
-        <td>Noon</td>
-        @foreach (var wr in Model.WeeklyRecipies.Items.Where(t => t.Slot == 2).OrderBy(t => t.Day))
-        {
-            <th> @wr.RecipeBasicData.Title </th>
-        }
-    </tr>
+        @*morning*@
+        <tr>
+            <td>Evening</td>
+            @foreach (var wr in Model.WeeklyRecipies.Items.Where(t => t.Slot == 3).OrderBy(t => t.Day))
+            {
+                <th> @Html.ActionLink(wr.RecipeBasicData.Title, "MealDetails", new { id = wr.RecipeBasicData.Id })</th>
+            }
+        </tr>
 
-    @*morning*@
-    <tr>
-        <td>Evening</td>
-        @foreach (var wr in Model.WeeklyRecipies.Items.Where(t => t.Slot == 3).OrderBy(t => t.Day))
-        {
-            <th> @wr.RecipeBasicData.Title </th>
-        }
-    </tr>
+        @*@*summary - calories, fat, carbohydrate
+        <tr>
+            <td>Summary</td>
+            @foreach (var rd in Model.Nutrition.Meals)
+            {
+            <th> @rd.Title, "Nutrition", new { }
+             TUTAJ TRZEBA WPISAĆ COŚ ŻEBY WYŚWIETLAŁO SUMMARY (NUTRIENTS) </th>
+            }
+        </tr>*@
+
+    </tbody>
 </table>
 

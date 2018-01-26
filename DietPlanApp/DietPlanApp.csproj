@@ -235,6 +235,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BusinessLogic\BLBmi.cs" />
+    <Compile Include="BusinessLogic\BLBmr.cs" />
+    <Compile Include="BusinessLogic\BLCpm.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -259,12 +262,18 @@
     <Compile Include="Migrations\201801211821045_Removed password form UserProfile.Designer.cs">
       <DependentUpon>201801211821045_Removed password form UserProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801251522362_change.cs" />
+    <Compile Include="Migrations\201801251522362_change.Designer.cs">
+      <DependentUpon>201801251522362_change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\External\Converter.cs" />
     <Compile Include="Models\External\ExtendedIngredient.cs" />
     <Compile Include="Models\External\Item.cs" />
+    <Compile Include="Models\External\Meal.cs" />
     <Compile Include="Models\External\MealDetails.cs" />
+    <Compile Include="Models\External\Nutrients.cs" />
     <Compile Include="Models\External\RecipeBasicData.cs" />
     <Compile Include="Models\External\Serialize.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -290,6 +299,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -374,6 +384,9 @@
     <EmbeddedResource Include="Migrations\201801211821045_Removed password form UserProfile.resx">
       <DependentUpon>201801211821045_Removed password form UserProfile.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801251522362_change.resx">
+      <DependentUpon>201801251522362_change.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -389,7 +402,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50679</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

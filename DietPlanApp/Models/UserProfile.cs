@@ -15,7 +15,7 @@ namespace DietPlanApp.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string MailAddress { get; set; }
-        public string Sex { get; set; }
+        public Gender Gender { get; set; }
         public int Age { get; set; }
         public int Height { get; set; }
         public int Weight { get; set; }
@@ -28,5 +28,11 @@ namespace DietPlanApp.Models
         Low,
         Medium,
         High
+    }
+
+    public enum Gender
+    {
+        Man,
+        Woman
     }
 }

@@ -5,13 +5,28 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h5>@Model.Title</h5>
+        <div class="text-center">
+            <h3><bold>@Model.Title</bold></h3>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <img src="@Model.Image"/>
+        <div class ="text-center">
+            <img src="@Model.Image" class="img-rounded" class="img-responsive"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="text-left">
+            <h4>Ingredient List:</h4>
+            <p>@Model.ExtendedIngredients.ToString()</p>
+            
+        </div>
+        
+        <div class="text-left">  
+            <h4>Instruction:</h4>         
+             <html-tags efener>@Model.Instructions</html-tags>
+           
+            
         </div>
     </div>
 </div>
+

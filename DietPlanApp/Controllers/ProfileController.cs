@@ -32,7 +32,7 @@ namespace DietPlanApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult FillOut(string name, string surname, string sex, int age, int weight, int height)
+        public ActionResult FillOut(string name, string surname, Gender gender, int age, int weight, int height)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace DietPlanApp.Controllers
                     MailAddress = user.Email,
                     Name = name,
                     Surname = surname,
-                    Sex = sex,
+                    Gender = Gender.Man,
                     Age = age,
                     Weight = weight,
                     Height = height,

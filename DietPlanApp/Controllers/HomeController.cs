@@ -95,6 +95,30 @@ namespace DietPlanApp.Controllers
             }
         }
 
+        public async Task<ActionResult> Nutrients (long calories, double protein, double fat, double carbohydrates)
+        {
+            var nutrientsData = await GetNutrientsDetails(calories, protein, fat, carbohydrates);
+
+            var nutrientsDetails = Models.External.Nutrients.FromJson(nutrientsData);
+
+            return View(nutrientsDetails);
+        }
+
+        public async Task<string> GetNutrientsDetails(long calories, double protein, double fat, double carbohydrates)
+        {
+            var basicUrl = $"https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate";
+
+            var builder = new UriBuilder(basicUrl) { Port = -1 };
+            var url = builder.ToString();
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Add(ApiKeyLabel, ApiKey);
+                return await httpClient.GetStringAsync(url);
+            }
+        }
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -119,6 +143,13 @@ namespace DietPlanApp.Controllers
         public ActionResult Allergens()
         {
             ViewBag.Message = "info about the allergens.";
+
+            return View();
+        }
+
+        public ActionResult Calories()
+        {
+            ViewBag.Message = "info about the calories.";
 
             return View();
         }

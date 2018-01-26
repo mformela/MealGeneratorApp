@@ -11,7 +11,12 @@ namespace DietPlanApp.ViewModels
     {
         public WeeklyRecipies WeeklyRecipies { get; set; }
         public Nutrition Nutrition { get; set; }
-        public RecipeBasicData RecipeBasicData { get; set;}
+        public RecipeBasicData RecipeBasicData { get; set; }
+        public MealDetails MealDetails { get; set; }
+        public ExtendedIngredient ExtendedIngredient { get; set; }
+        public Nutrients Nutrients { get; set; }
+        public Meal Meal { get; set; }
+
     }
 
 }
